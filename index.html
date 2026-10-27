@@ -5,42 +5,96 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>David Duque Agredo · Desarrollador web</title>
 <meta name="description" content="Portfolio de David Duque Agredo, desarrollador web en Madrid. Webs para negocios, apps de gestión a medida y automatización.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#0b0d12; --panel:#141824; --panel2:#1a2030; --txt:#e8eaf0; --mut:#9aa3b5; --acc:#4f8cff; --acc2:#2dd4a7; }
+  :root {
+    --bg:#0a0c11; --panel:#12151f; --panel2:#181d2b; --line:#232b40;
+    --txt:#eef1f7; --mut:#98a2b8;
+    --acc:#38bdf8; --acc2:#2dd4a7;
+    --grad:linear-gradient(100deg,var(--acc2),var(--acc));
+  }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--bg); color:var(--txt); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.6; }
-  .wrap { max-width:960px; margin:0 auto; padding:0 20px; }
-  header { padding:72px 0 40px; }
-  h1 { font-size:2.2rem; letter-spacing:-.5px; }
-  .tag { color:var(--acc2); font-weight:600; margin-top:6px; }
-  .intro { color:var(--mut); max-width:640px; margin-top:14px; }
-  .badges { margin-top:18px; display:flex; flex-wrap:wrap; gap:8px; }
-  .badge { background:var(--panel); border:1px solid #242c3f; color:var(--mut); font-size:.8rem; padding:4px 12px; border-radius:999px; }
-  h2 { font-size:1.4rem; margin:56px 0 20px; padding-bottom:8px; border-bottom:1px solid #242c3f; }
-  .proj { background:var(--panel); border:1px solid #242c3f; border-radius:14px; overflow:hidden; margin-bottom:24px; display:flex; flex-direction:column; }
-  .proj img { width:100%; display:block; border-bottom:1px solid #242c3f; }
-  .proj-body { padding:22px 24px 24px; }
-  .proj h3 { font-size:1.15rem; margin-bottom:6px; }
-  .proj p { color:var(--mut); font-size:.95rem; }
-  .tech { margin:12px 0 16px; display:flex; flex-wrap:wrap; gap:6px; }
-  .tech span { background:var(--panel2); color:var(--acc2); font-size:.75rem; padding:3px 10px; border-radius:6px; }
-  .btns a { display:inline-block; text-decoration:none; font-size:.88rem; font-weight:600; padding:8px 16px; border-radius:8px; margin-right:10px; }
-  .btns .demo { background:var(--acc); color:#fff; }
-  .btns .code { background:transparent; color:var(--acc); border:1px solid var(--acc); }
-  ul.serv { list-style:none; }
-  ul.serv li { background:var(--panel); border:1px solid #242c3f; border-radius:12px; padding:16px 20px; margin-bottom:12px; }
-  ul.serv b { color:var(--acc2); }
-  ul.serv p { color:var(--mut); font-size:.92rem; margin-top:2px; }
-  footer { margin:56px 0 48px; color:var(--mut); font-size:.9rem; }
-  footer a { color:var(--acc); text-decoration:none; }
-  @media (min-width:720px){ .proj{flex-direction:row;} .proj img{width:46%;border-bottom:none;border-right:1px solid #242c3f;object-fit:cover;} .proj-body{flex:1;} }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--txt); font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; line-height:1.6; overflow-x:hidden; }
+  ::selection { background:rgba(45,212,167,.35); }
+  .wrap { max-width:980px; margin:0 auto; padding:0 22px; }
+
+  /* cabecera con aura */
+  header { position:relative; padding:96px 0 56px; }
+  header::before, header::after {
+    content:""; position:absolute; border-radius:50%; filter:blur(90px); z-index:-1; opacity:.5;
+  }
+  header::before { width:420px; height:420px; top:-80px; left:-120px; background:radial-gradient(circle,rgba(45,212,167,.35),transparent 65%); animation:flotar 11s ease-in-out infinite; }
+  header::after { width:380px; height:380px; top:40px; right:-140px; background:radial-gradient(circle,rgba(56,189,248,.30),transparent 65%); animation:flotar 13s ease-in-out infinite reverse; }
+  @keyframes flotar { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(30px,24px) scale(1.08);} }
+
+  .pill { display:inline-block; font-size:.78rem; font-weight:600; letter-spacing:.4px; color:var(--acc2);
+    border:1px solid rgba(45,212,167,.4); background:rgba(45,212,167,.08); padding:5px 14px; border-radius:999px; margin-bottom:22px; }
+  .pill::before { content:"●"; margin-right:8px; font-size:.6rem; vertical-align:2px; animation:latido 2.2s ease-in-out infinite; }
+  @keyframes latido { 0%,100%{opacity:1;} 50%{opacity:.35;} }
+
+  h1 { font-family:'Space Grotesk',sans-serif; font-size:clamp(2.6rem,7vw,4.2rem); font-weight:700; letter-spacing:-1.5px; line-height:1.05;
+    background:linear-gradient(100deg,#fff 30%,#8fd8c9 70%,#7cc7f5); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .tag { font-family:'Space Grotesk',sans-serif; font-size:1.15rem; margin-top:14px; color:var(--txt); }
+  .tag b { background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .intro { color:var(--mut); max-width:620px; margin-top:16px; font-size:1.02rem; }
+  .badges { margin-top:24px; display:flex; flex-wrap:wrap; gap:8px; }
+  .badge { background:var(--panel); border:1px solid var(--line); color:var(--mut); font-size:.8rem; padding:5px 13px; border-radius:999px; transition:all .25s ease; }
+  .badge:hover { color:var(--txt); border-color:var(--acc2); transform:translateY(-2px); }
+
+  h2 { font-family:'Space Grotesk',sans-serif; font-size:1.6rem; letter-spacing:-.5px; margin:64px 0 26px; display:flex; align-items:center; gap:14px; }
+  h2::before { content:""; width:26px; height:4px; border-radius:2px; background:var(--grad); flex:none; }
+
+  /* tarjetas escaparate */
+  .proj { background:var(--panel); border:1px solid var(--line); border-radius:18px; overflow:hidden; margin-bottom:30px;
+    transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+  .proj:hover { transform:translateY(-5px); border-color:rgba(45,212,167,.45); box-shadow:0 18px 50px -18px rgba(0,0,0,.7), 0 0 0 1px rgba(45,212,167,.12); }
+  .proj-img { overflow:hidden; border-bottom:1px solid var(--line); }
+  .proj img { width:100%; aspect-ratio:16/9; object-fit:cover; object-position:top; display:block; transition:transform .5s ease; }
+  .proj:hover img { transform:scale(1.035); }
+  .proj-body { padding:24px 26px 26px; }
+  .proj h3 { font-family:'Space Grotesk',sans-serif; font-size:1.25rem; letter-spacing:-.3px; margin-bottom:8px; }
+  .proj p { color:var(--mut); font-size:.95rem; max-width:660px; }
+  .tech { margin:14px 0 18px; display:flex; flex-wrap:wrap; gap:6px; }
+  .tech span { background:var(--panel2); color:var(--acc2); font-size:.75rem; font-weight:500; padding:4px 11px; border-radius:6px; border:1px solid transparent; }
+  .btns a { display:inline-block; text-decoration:none; font-size:.9rem; font-weight:600; padding:9px 20px; border-radius:9px; margin-right:10px; transition:all .25s ease; }
+  .btns .demo { background:var(--grad); color:#06231c; }
+  .btns .demo:hover { filter:brightness(1.1); transform:translateY(-2px); box-shadow:0 8px 22px -8px rgba(45,212,167,.55); }
+  .btns .code { background:transparent; color:var(--acc); border:1px solid rgba(56,189,248,.5); }
+  .btns .code:hover { background:rgba(56,189,248,.1); transform:translateY(-2px); }
+
+  /* servicios */
+  ul.serv { list-style:none; display:grid; gap:14px; }
+  @media (min-width:720px){ ul.serv { grid-template-columns:repeat(3,1fr); } }
+  ul.serv li { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px 22px; position:relative; transition:all .3s ease; }
+  ul.serv li::before { content:""; position:absolute; top:0; left:22px; right:22px; height:2px; background:var(--grad); border-radius:2px; opacity:0; transition:opacity .3s ease; }
+  ul.serv li:hover { transform:translateY(-4px); border-color:rgba(56,189,248,.4); }
+  ul.serv li:hover::before { opacity:1; }
+  ul.serv b { color:var(--txt); font-family:'Space Grotesk',sans-serif; font-weight:500; display:block; margin-bottom:6px; }
+  ul.serv p { color:var(--mut); font-size:.9rem; }
+
+  footer { margin:64px 0 48px; padding-top:26px; border-top:1px solid var(--line); color:var(--mut); font-size:.92rem; }
+  footer a { color:var(--acc); text-decoration:none; font-weight:500; }
+  footer a:hover { text-decoration:underline; }
+
+  /* aparición al hacer scroll */
+  .reveal { opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce) {
+    .reveal { opacity:1; transform:none; transition:none; }
+    header::before, header::after, .pill::before { animation:none; }
+    html { scroll-behavior:auto; }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
+    <span class="pill">Disponible para proyectos</span>
     <h1>David Duque Agredo</h1>
-    <div class="tag">Desarrollador web · Madrid</div>
+    <div class="tag">Desarrollador web · <b>Madrid</b></div>
     <p class="intro">Administrador de sistemas y desarrollador. Construyo webs y aplicaciones a medida para negocios: rápidas, instalables como app y fáciles de mantener.</p>
     <div class="badges">
       <span class="badge">React</span><span class="badge">TypeScript</span><span class="badge">JavaScript</span>
@@ -51,8 +105,8 @@
 
   <h2>Proyectos</h2>
 
-  <div class="proj">
-    <img src="img/supervampiros.png" alt="Captura de Alimentos Vampíricos">
+  <div class="proj reveal">
+    <div class="proj-img"><img src="img/supervampiros.png" alt="Captura de Alimentos Vampíricos"></div>
     <div class="proj-body">
       <h3>Alimentos Vampíricos · Inventario doméstico</h3>
       <p>App de gestión de inventario con caducidades, lista de la compra y recetas. Funciona sin conexión y se instala como app en el móvil; cada acción frecuente se hace en menos de 2 segundos.</p>
@@ -61,8 +115,8 @@
     </div>
   </div>
 
-  <div class="proj">
-    <img src="img/contado-pierde.png" alt="Captura de Contado Pierde">
+  <div class="proj reveal">
+    <div class="proj-img"><img src="img/contado-pierde.png" alt="Captura de Contado Pierde"></div>
     <div class="proj-body">
       <h3>Contado Pierde · Reservas online</h3>
       <p>Sistema de reservas con calendario de huecos, gestión de clientes y panel de administrador, en producción para un laboratorio fotográfico. Los clientes reservan y cancelan desde el móvil.</p>
@@ -71,8 +125,8 @@
     </div>
   </div>
 
-  <div class="proj">
-    <img src="img/organizadortai.png" alt="Captura del Organizador TAI">
+  <div class="proj reveal">
+    <div class="proj-img"><img src="img/organizadortai.png" alt="Captura del Organizador TAI"></div>
     <div class="proj-body">
       <h3>Organizador TAI · Planificador de estudio</h3>
       <p>Planificador para opositores: calendario con seguimiento diario, rachas, cuaderno de errores y temporizador de sesiones. Sincroniza entre dispositivos y funciona offline.</p>
@@ -81,8 +135,8 @@
     </div>
   </div>
 
-  <div class="proj">
-    <img src="img/ultimo-informatico.png" alt="Captura de ÚLTIMO INFORMÁTICO">
+  <div class="proj reveal">
+    <div class="proj-img"><img src="img/ultimo-informatico.png" alt="Captura de ÚLTIMO INFORMÁTICO"></div>
     <div class="proj-body">
       <h3>ÚLTIMO INFORMÁTICO · Videojuego roguelite</h3>
       <p>Juego de supervivencia para móvil y navegador: oleadas de impresoras poseídas y emails infinitos, jefes por fases que cambian hasta el género (de arcade a plataformas), armas que evolucionan y progresión permanente. Pixel art original e instalable como app.</p>
@@ -91,11 +145,11 @@
     </div>
   </div>
 
-  <h2>Qué puedo hacer por tu negocio</h2>
+  <h2 class="reveal">Qué puedo hacer por tu negocio</h2>
   <ul class="serv">
-    <li><b>Web para tu negocio con reserva o pedido online.</b><p>Tu clientela reserva cita, pista o mesa desde el móvil. Rápida, instalable como app y sin cuotas de plataforma.</p></li>
-    <li><b>Herramientas de gestión a medida.</b><p>Inventario, gastos, planificación o seguimiento de clientes: una app sencilla que sustituye al Excel y funciona también sin internet.</p></li>
-    <li><b>Automatización de tareas repetitivas.</b><p>Scripts y pequeños programas que quitan trabajo manual: informes, correos, organización de archivos y datos.</p></li>
+    <li class="reveal"><b>Web para tu negocio con reserva o pedido online.</b><p>Tu clientela reserva cita, pista o mesa desde el móvil. Rápida, instalable como app y sin cuotas de plataforma.</p></li>
+    <li class="reveal"><b>Herramientas de gestión a medida.</b><p>Inventario, gastos, planificación o seguimiento de clientes: una app sencilla que sustituye al Excel y funciona también sin internet.</p></li>
+    <li class="reveal"><b>Automatización de tareas repetitivas.</b><p>Scripts y pequeños programas que quitan trabajo manual: informes, correos, organización de archivos y datos.</p></li>
   </ul>
 
   <footer>
@@ -103,5 +157,9 @@
     <a href="https://github.com/kagobio">GitHub</a>
   </footer>
 </div>
+<script>
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 3) * 70 + 'ms'; io.observe(el); });
+</script>
 </body>
 </html>
